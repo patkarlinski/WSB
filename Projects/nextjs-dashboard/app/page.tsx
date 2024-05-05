@@ -16,11 +16,7 @@ export default function Page() {
         <div className={styles.shape}
           />
           <p className={`${lusitana.className} antialiased`}>
-            <strong>Welcome to Acme.</strong> This is the example for the{' '}
-            <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
-            </a>
-            , brought to you by Vercel.
+            <strong>Welcome.</strong> This is the example for the app{' '}
           </p>
           <Link
             href="/login"
