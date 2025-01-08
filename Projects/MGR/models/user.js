@@ -1,16 +1,15 @@
 import { Schema, model } from 'mongoose';
 
 
-//tworzenie schemy
+//create schema
 const userSchema = new Schema({
-    fisrtName: {
+    firstName: {
         type: String,
         required: true
     },
     lastName: {
         type: String,
         required: true,
-        min: 0
     },
     email: {
         type: String,
@@ -18,7 +17,5 @@ const userSchema = new Schema({
     }
 });
 
-//Kompilowanie modelu
-
-
+//Compiling the model
 export default model('User', userSchema)

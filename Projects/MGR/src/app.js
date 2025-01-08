@@ -1,15 +1,30 @@
 import app from './server.js'
-import connectToDatabase from './database.js';
+import { connectToDatabase, createCollection } from './database.js';
+import seedDatabase from './seeds.js';
 
-//DB connect 
-connectToDatabase ();
+const startApp = async () => {
+    try {
+        // Połączenie z bazą danych
+        await connectToDatabase();
+        console.log('Połączono z bazą danych.');
 
-//sever app
-const PORT = 3000;
-app.listen(PORT, (err) => {
-    if (err){
-        console.log(`Error is here ${err}`)
-        process.exit(1);
+        // Tworzenie kolekcji
+        await createCollection();
+        console.log('Kolekcje zostały utworzone.');
+
+        // Seedowanie bazy danych
+        await seedDatabase();
+        console.log('Baza danych została zainicjalizowana.');
+
+        // Uruchomienie serwera
+        const PORT = 3000;
+        app.listen(PORT, () => {
+            console.log(`Aplikacja nasłuchuje na porcie ${PORT}`);
+        });
+    } catch (err) {
+        console.error('Błąd podczas uruchamiania aplikacji:', err.message);
+        process.exit(1); // Zakończ proces w przypadku błędu krytycznego
     }
-    console.log(`App listening on port ${PORT}`);
-});
+};
+
+startApp();
