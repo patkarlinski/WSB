@@ -15,9 +15,9 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/api', router)
 
-app.use('/graphql', graphqlHTTP({
-    schema,
-    graphiql: true,
-}));
+// app.use('/graphql', graphqlHTTP({
+//     schema,
+//     graphiql: true,
+// }));
 
 export default app;
