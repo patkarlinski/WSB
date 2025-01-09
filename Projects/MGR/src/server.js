@@ -1,6 +1,8 @@
 import express from 'express';
 import router from './router.js'
 import morgan from 'morgan';
+import { graphqlHTTP } from 'express-graphql';
+import schema from './graphql/schema.js';
 const app = express();
 
 app.use(morgan('dev'))
@@ -15,9 +17,9 @@ app.use(express.urlencoded({extended: true}))
 
 app.use('/api', router)
 
-// app.use('/graphql', graphqlHTTP({
-//     schema,
-//     graphiql: true,
-// }));
+app.use('/graphql', graphqlHTTP({
+    schema,
+    graphiql: true,
+}));
 
 export default app;

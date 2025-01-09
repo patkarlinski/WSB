@@ -1,7 +1,6 @@
-import { GraphQLObjectType, GraphQLInt, GraphQLString, GraphQLSchema, GraphQLList, GraphQLNonNull } from 'graphql';
-import User from './models/user.js';
+import { GraphQLObjectType, GraphQLInt, GraphQLString } from 'graphql';
+import User from '../../models/user.js';
 
-// Typ użytkownika
 const UserType = new GraphQLObjectType({
     name: 'User',
     fields: () => ({
@@ -11,3 +10,5 @@ const UserType = new GraphQLObjectType({
         email: { type: GraphQLString }
     })
 });
+
+export default UserType;
